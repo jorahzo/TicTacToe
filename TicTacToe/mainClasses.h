@@ -26,7 +26,7 @@ class GameBoard{
 public:
     GameBoard();
     void printBoard();
-    char checkBoard();
+    char evaluateGameEnd();
     void playerMove(Player player);
 private:
     char board[4][4];
