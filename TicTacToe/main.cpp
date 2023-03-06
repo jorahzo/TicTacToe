@@ -17,14 +17,14 @@ int main() {
         game.printBoard();
         std::cout << game.evaluateGameEnd() <<"\n";
         if (game.evaluateGameEnd() == 'x') {
-            std::cout << "Player X wins!\n";
+            std::cout << x.printUsername() << " wins the game!\n";
             return 0;
         }
         game.playerMove(o);
         game.printBoard();
         std::cout << game.evaluateGameEnd() <<"\n";
         if (game.evaluateGameEnd() == 'o'){
-            std::cout << "Player O wins!\n";
+            std::cout << o.printUsername() << " wins the game!\n";
             return 0;
         }
     }
