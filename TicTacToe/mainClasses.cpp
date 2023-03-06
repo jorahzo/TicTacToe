@@ -19,7 +19,8 @@
         }
     }
 
-    void GameBoard::playerMove(Player player){
+void GameBoard::playerMove(Player player){
+    while(true){
         if (player.printPlayerChar() == 'x'){
             std::cout << "Please make a move " << player.printUsername() << "\n";
             int column;
@@ -28,7 +29,18 @@
             int row;
             std::cout << "What row?\n";
             std::cin >> row;
-            board[row-1][column-1] = 'x';
+            if(board[row-1][column-1] == 'o'){
+                std::cout << "\nInvalid move. Other player has made a move here already. Try again\n\n";
+                continue;
+            }
+            else if (board[row-1][column-1] == 'x'){
+                std::cout << "\nYou have already made a move here. Pick a new space\n\n";
+                continue;
+            }
+            else{
+                board[row-1][column-1] = 'x';
+                break;
+            }
         }
         else if (player.printPlayerChar() == 'o'){
             std::cout << "Please make a move " << player.printUsername() << "\n";
@@ -38,14 +50,22 @@
             int row;
             std::cout << "What row?\n";
             std::cin >> row;
-            board[row-1][column-1] = 'o';
+            if(board[row-1][column-1] == 'x'){
+                std::cout << "\nInvalid move. Other player has made a move here already. Try again\n\n";
+                continue;;
+            }
+            else if (board[row-1][column-1] == 'o'){
+                std::cout << "\nYou have already made a move here. Pick a new space\n";
+                continue;
+            }
+            else{
+                board[row-1][column-1] = 'o';
+                break;
+            }
         }
-        else{
-            std::cout << "I don't think you're real? Aborting game.";
-            abort();
-        }
-        
+        break;
     }
+}
 
     void GameBoard::printBoard(){
         for(int i = 0; i < 4; i++){
@@ -121,6 +141,17 @@ char GameBoard::evaluateGameEnd(){
     // Check if user O has 4 O's in a diagonal.
     if((board[0][0] == 'o' && board[1][1] == 'o' && board[2][2] == 'o' && board[3][3] == 'o')||(board[3][0] == 'o' && board[2][1] == 'o' && board[1][2] == 'o' && board[0][3] == 'o')){
         return 'o';
+    }
+    int count = 0;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            if ((board[i][j] == 'x') || board[i][j] == 'o'){
+                count++;
+            }
+        }
+        if (count == 16){
+            return 'y';
+        }
     }
     return 'z';
 }

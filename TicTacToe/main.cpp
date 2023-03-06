@@ -20,11 +20,19 @@ int main() {
             std::cout << x.printUsername() << " wins the game!\n";
             return 0;
         }
+        else if (game.evaluateGameEnd() == 'y'){
+            std::cout << "Draw game!\n";
+            return 0;
+        }
         game.playerMove(o);
         game.printBoard();
         std::cout << game.evaluateGameEnd() <<"\n";
         if (game.evaluateGameEnd() == 'o'){
             std::cout << o.printUsername() << " wins the game!\n";
+            return 0;
+        }
+        else if (game.evaluateGameEnd() == 'y'){
+            std::cout << "Draw game!\n";
             return 0;
         }
     }
