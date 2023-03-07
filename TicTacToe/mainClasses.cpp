@@ -37,6 +37,10 @@ void GameBoard::playerMove(Player player){
                 std::cout << "\nYou have already made a move here. Pick a new space\n\n";
                 continue;
             }
+            else if ((row > 4) || (row < 1) || (column > 4) || (column < 1)){
+                std::cout << "\nRow and/or column selection is not valid. Please try again\n\n";
+                continue;
+            }
             else{
                 board[row-1][column-1] = 'x';
                 break;
@@ -56,6 +60,10 @@ void GameBoard::playerMove(Player player){
             }
             else if (board[row-1][column-1] == 'o'){
                 std::cout << "\nYou have already made a move here. Pick a new space\n";
+                continue;
+            }
+            else if ((row > 4) || (row < 1) || (column > 4) || (column < 1)){
+                std::cout << "\nRow and/or column selection is not valid. Please try again\n\n";
                 continue;
             }
             else{
@@ -159,7 +167,7 @@ char GameBoard::evaluateGameEnd(){
         playerChar = playerType;
         std::cout << "Please enter username for player " << playerChar << "\n";
         std::string nameInput;
-        std::cin >> nameInput;
+        std::getline(std::cin, nameInput);
         this->username = nameInput;
     }
 

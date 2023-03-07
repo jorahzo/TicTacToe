@@ -15,7 +15,6 @@ int main() {
     while(true){
         game.playerMove(x);
         game.printBoard();
-        std::cout << game.evaluateGameEnd() <<"\n";
         if (game.evaluateGameEnd() == 'x') {
             std::cout << x.printUsername() << " wins the game!\n";
             return 0;
