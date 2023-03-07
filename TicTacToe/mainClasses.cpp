@@ -150,6 +150,7 @@ char GameBoard::evaluateGameEnd(){
     if((board[0][0] == 'o' && board[1][1] == 'o' && board[2][2] == 'o' && board[3][3] == 'o')||(board[3][0] == 'o' && board[2][1] == 'o' && board[1][2] == 'o' && board[0][3] == 'o')){
         return 'o';
     }
+    // Checks if the board is full.
     int count = 0;
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
