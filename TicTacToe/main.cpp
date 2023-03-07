@@ -9,10 +9,31 @@
 
 int main() {
     Player x('x');
-    Player y('y');
+    Player o('o');
     GameBoard game;
-    std::cout << x.printUsername() << "\n";
-    std::cout << y.printUsername() << "\n";
     game.printBoard();
+    while(true){
+        game.playerMove(x);
+        game.printBoard();
+        if (game.evaluateGameEnd() == 'x') {
+            std::cout << x.printUsername() << " wins the game!\n";
+            return 0;
+        }
+        else if (game.evaluateGameEnd() == 'y'){
+            std::cout << "Draw game!\n";
+            return 0;
+        }
+        game.playerMove(o);
+        game.printBoard();
+        std::cout << game.evaluateGameEnd() <<"\n";
+        if (game.evaluateGameEnd() == 'o'){
+            std::cout << o.printUsername() << " wins the game!\n";
+            return 0;
+        }
+        else if (game.evaluateGameEnd() == 'y'){
+            std::cout << "Draw game!\n";
+            return 0;
+        }
+    }
     return 0;
 }

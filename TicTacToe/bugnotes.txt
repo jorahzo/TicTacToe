@@ -1,0 +1,7 @@
+// These are notes for bugtracking.
+[ ] Identical Usernames Can be Used
+[X] Users can replace each other's move
+[X] Usernames with spaces currently not expected
+[X] Moves that aren't possible can be made
+	* This includes inputting incorrect data types
+[X] Game does not end when all moves are made
